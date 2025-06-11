@@ -31,6 +31,8 @@ public class MySketch extends PApplet {
   private Background scene7;
   private Background scene8;
   private Background scene9;
+  private Background scene10;
+  private Background scene11;
   private Background escape;
   
   private Background death1;
@@ -49,8 +51,13 @@ public class MySketch extends PApplet {
   private Item invisibleChecker3;
   private Item invisibleChecker4;
   
+  private Item puzzle1;
+  private Item puzzle2;
+  private Item puzzle3;
+  private Item puzzle4;
+  
   //setting stage to 0
-  private static int stage = 0;
+  private static int stage = 16;
   
   public void settings() {
         size(350, 625); //set size of screen to background image pixel size
@@ -82,6 +89,10 @@ public class MySketch extends PApplet {
     scene8 = new Background(this, 0,0, "images/15.png");
     scene9 = new Background(this, 0,0, "images/16.png");
     
+    //puzzle scenes
+    scene10 = new Background(this, 0,0, "images/17.png");
+    scene11 = new Background(this, 0,0, "images/18.png");
+    
     checkpoint1 = new Item(this, 290,200, "images/checkpoint.png");
     checkpoint2 = new Item(this, 240,260, "images/checkpoint.png");
     checkpoint3 = new Item(this, 140,340, "images/checkpoint.png");
@@ -92,6 +103,12 @@ public class MySketch extends PApplet {
     invisibleChecker2 = new Item(this, 280, 500, "images/checkpoint.png");
     invisibleChecker3 = new Item(this, 260, 540, "images/checkpoint.png");
     invisibleChecker4 = new Item(this, 270, 520, "images/checkpoint.png");
+    
+    puzzle1 = new Item(this, 40, 250, "images/puzzle1.png" );
+    puzzle2 = new Item(this, 140, 120, "images/puzzle2.png" );
+    puzzle3 = new Item(this, 35, 30, "images/puzzle3.png" );
+    puzzle4 = new Item(this, 100, 400, "images/puzzle4.png" );
+    
     //nian = new Person(this, 200, 600, "images/nian.png");
   }
   
@@ -141,10 +158,20 @@ public class MySketch extends PApplet {
         invisibleChecker4.draw();
         scene7.draw();
         
-    }else if(stage == 13){     
-        scene8.draw();
     }else if(stage == 14){     
+        scene8.draw();
+            
+    }else if(stage == 15){     
         scene9.draw();
+    }else if(stage == 16){     
+        scene10.draw();
+        puzzle1.draw();
+        puzzle2.draw();
+        puzzle3.draw();
+        puzzle4.draw();
+        
+    }else if(stage == 17){     
+        scene11.draw();
     }
     
     if(mc.isCollidingWith(checkpoint1)){
@@ -206,11 +233,16 @@ public class MySketch extends PApplet {
        }
        
        if(invisibleChecker2.isClicked(mouseX, mouseY) || invisibleChecker3.isClicked(mouseX, mouseY) || invisibleChecker4.isClicked(mouseX, mouseY)){
-                stage = 13;
+                stage++;
                 invisibleChecker2.delete();
                 invisibleChecker3.delete();
                 invisibleChecker4.delete();
        }
+       
+       if(scene8.isClicked(mouseX, mouseY) && stage > 12 && stage < 16){
+           stage++;
+       }
+       
     }
     
 }//end class
