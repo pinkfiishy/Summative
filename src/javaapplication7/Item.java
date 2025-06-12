@@ -38,9 +38,21 @@ public class Item {
             int centerY = y+(image.pixelHeight/2);
             float d = PApplet.dist(mouseX, mouseY, centerX, centerY);
             
-            System.out.println("Clicked.");
-            
             return d < 30;
+    }
+    
+    
+    public void teleport(int newx, int newy){
+            x = newx;
+            y = newy;      
+        }
+    
+    public boolean move(int newx, int newy, boolean ans){
+        if(ans == true){
+            x = newx; 
+            y = newy; 
+        }
+        return true;
     }
     
     public boolean isCollidingWith(Person other){

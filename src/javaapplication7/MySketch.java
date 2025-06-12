@@ -39,6 +39,7 @@ public class MySketch extends PApplet {
   private Background death2;
   
   private static int counter = 5; 
+  private static int whichPuzzleSelected = 1;
   
   //declare items
   private Item checkpoint1;
@@ -57,7 +58,7 @@ public class MySketch extends PApplet {
   private Item puzzle4;
   
   //setting stage to 0
-  private static int stage = 16;
+  private static int stage = 0;
   
   public void settings() {
         size(350, 625); //set size of screen to background image pixel size
@@ -107,7 +108,7 @@ public class MySketch extends PApplet {
     puzzle1 = new Item(this, 40, 250, "images/puzzle1.png" );
     puzzle2 = new Item(this, 140, 120, "images/puzzle2.png" );
     puzzle3 = new Item(this, 35, 30, "images/puzzle3.png" );
-    puzzle4 = new Item(this, 100, 400, "images/puzzle4.png" );
+    puzzle4 = new Item(this, 170, 400, "images/puzzle4.png" );
     
     //nian = new Person(this, 200, 600, "images/nian.png");
   }
@@ -210,9 +211,11 @@ public class MySketch extends PApplet {
     if(mc.isCollidingWith(nian)){
         death2.draw();
     }
-    if(keyPressed){
+    if(keyPressed){ //meaning if any of the keyboard inputs are made
+        //moving at 2 pixels towards the direction if that specific arrow key is pressed
+        //the direction of movement just depends on the x and y coordinate
         if(keyCode == LEFT){
-            mc.move(-2,0);
+            mc.move(-2,0); 
         }else if(keyCode == RIGHT){
             mc.move(2,0);
         }else if(keyCode == DOWN){
@@ -240,6 +243,97 @@ public class MySketch extends PApplet {
        }
        
        if(scene8.isClicked(mouseX, mouseY) && stage > 12 && stage < 16){
+           stage++;
+       }
+       
+       if(stage == 16 && whichPuzzleSelected == 1){
+           if(puzzle1.move(mouseX, mouseY, true)){
+               puzzle1.x = mouseX - 80;
+               puzzle1.y = mouseY - 80;
+               
+               boolean xcf = false;
+               boolean ycf = false; 
+               
+               if(puzzle1.x < 93 && puzzle1.x > 83){
+                   xcf = true;
+               }
+               if(puzzle1.y < 22 && puzzle1.y > 12){
+                   ycf = true; 
+               }
+               
+               if(xcf == true && ycf == true){
+                   whichPuzzleSelected = 2;
+               }
+           }
+       }
+       if(stage == 16 && whichPuzzleSelected == 2){
+           if(puzzle2.move(mouseX, mouseY, true)){
+               puzzle2.x = mouseX - 80;
+               puzzle2.y = mouseY - 80;
+               
+               boolean xcf = false;
+               boolean ycf = false; 
+               
+               if(puzzle2.x < 93 && puzzle2.x > 83){
+                   xcf = true;
+               }
+               if(puzzle2.y < 124 && puzzle2.y > 110){
+                   ycf = true;
+               }
+               
+               if(xcf == true && ycf == true){
+                   whichPuzzleSelected = 3;
+               }
+           }
+       }
+       if(stage == 16 && whichPuzzleSelected == 3){
+           if(puzzle3.move(mouseX, mouseY, true)){
+               puzzle3.x = mouseX - 80;
+               puzzle3.y = mouseY - 80;
+               
+               boolean xcf = false;
+               boolean ycf = false; 
+               System.out.println(puzzle3.x);
+               System.out.println(puzzle3.y);
+               
+               if(puzzle3.x < 93 && puzzle3.x > 83){
+                   xcf = true;
+                   
+               }
+               if(puzzle3.y < 247 && puzzle3.y > 235){
+                   ycf = true;
+               }
+               
+               if(xcf == true && ycf == true){
+                   whichPuzzleSelected = 4;
+               }
+           }
+       }
+       if(stage == 16 && whichPuzzleSelected == 4){
+           if(puzzle4.move(mouseX, mouseY, true)){
+               puzzle4.x = mouseX - 80;
+               puzzle4.y = mouseY - 80;
+               
+               boolean xcf = false;
+               boolean ycf = false; 
+               System.out.println(puzzle4.x);
+               System.out.println(puzzle4.y);
+               
+               if(puzzle4.x < 93 && puzzle4.x > 83){
+                   xcf = true;
+                   
+               }
+               if(puzzle4.y < 387 && puzzle4.y > 381){
+                   ycf = true;
+               }
+               
+               if(xcf == true && ycf == true){
+                   whichPuzzleSelected = 5;
+               }
+           }
+       }
+       
+       if(whichPuzzleSelected == 5){
            stage++;
        }
        
