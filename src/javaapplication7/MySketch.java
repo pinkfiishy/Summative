@@ -35,6 +35,14 @@ public class MySketch extends PApplet {
   private Background scene10;
   private Background scene11;
   private Background escape;
+  private Background nianScared1;
+  private Background nianScared2;
+  private Background nianScared3;
+  private Background nianScared4;
+  private Background nianScared5;
+  private Background nianScared6;
+  private Background nianScared7;
+  private Background nianScared8;
   
   //Death scenes once these are reached you're cooked gotta start all over again
   //Because nothing comes after these scenes no matter what you click
@@ -119,6 +127,17 @@ public class MySketch extends PApplet {
     //puzzle scenes
     scene10 = new Background(this, 0,0, "images/17.png");
     scene11 = new Background(this, 0,0, "images/18.png");
+    
+    //Discovering nian is afraid of red scene
+    nianScared1 = new Background(this, 0,0, "images/22.png");
+    nianScared2 = new Background(this, 0,0, "images/23.png");
+    nianScared3 = new Background(this, 0,0, "images/24.png");
+    nianScared4 = new Background(this, 0,0, "images/25.png");
+    nianScared5 = new Background(this, 0,0, "images/26.png");
+    nianScared6 = new Background(this, 0,0, "images/27.png");
+    nianScared7 = new Background(this, 0,0, "images/28.png");
+    nianScared8 = new Background(this, 0,0, "images/29.png");
+
     
     //Moving on from the Background objects we now have checkpoints we need to declear that are Item objects
     //Every checkpoint and invisibleChecker uses the yellow dot image
@@ -234,6 +253,22 @@ public class MySketch extends PApplet {
     //Completed puzzle scene    
     }else if(stage == 17){     
         scene11.draw();
+    }else if(stage == 18){     
+        nianScared1.draw();
+    }else if(stage == 19){     
+        nianScared2.draw();
+    }else if(stage == 20){     
+        nianScared3.draw();
+    }else if(stage == 21){     
+        nianScared4.draw();
+    }else if(stage == 22){     
+        nianScared5.draw();
+    }else if(stage == 23){     
+        nianScared6.draw();
+    }else if(stage == 24){     
+        nianScared7.draw();
+    }else if(stage == 25){     
+        nianScared8.draw();
     }
     
     //COLLISION DETECTION! 
@@ -437,8 +472,12 @@ public class MySketch extends PApplet {
            stage++;
        }
        
+       if(scene11.isClicked(mouseX, mouseY) && stage > 16 && stage < 25){
+           stage++;
+       }
+       
        //Attemping to swap to a Jframe (thanks for teaching me Lily)
-       if(stage == 18){
+       if(stage == 26){
         //I decided to comment these two lines out because I want the jFrame to exist simultainiously with the game
             //this.noLoop();
             //this.getSurface().setVisible(false);
