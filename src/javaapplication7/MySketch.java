@@ -437,6 +437,13 @@ public class MySketch extends PApplet {
            stage++;
        }
        
+       //Attemping to swap to a Jframe (thanks for teaching me Lily)
+       if(stage == 18){
+        //I decided to comment these two lines out because I want the jFrame to exist simultainiously with the game
+            //this.noLoop();
+            //this.getSurface().setVisible(false);
+            new EndPage().setVisible(true);
+       }
     }
     
 }//end class
